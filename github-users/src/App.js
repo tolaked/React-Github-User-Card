@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Users from "./Components/Users";
+import UserFollowers from "./Components/userFollowers";
 
-export class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,8 +16,8 @@ export class App extends Component {
         return res.json();
       })
       .then(data => {
-        console.log(data);
         const { name, avatar_url, followers, following } = data;
+
         this.setState({
           user: {
             name: name,
@@ -32,6 +33,7 @@ export class App extends Component {
     return (
       <div>
         <Users userData={this.state.user} />
+        <UserFollowers />
       </div>
     );
   }
